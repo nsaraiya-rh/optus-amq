@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.redhat</groupId>
+  <artifactId>amq-test-produce</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+
+  <name>A Camel Spring Boot Route</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+<!--    <maven.compiler.source>17</maven.compiler.source>-->
+<!--    <maven.compiler.target>17</maven.compiler.target>-->
+<!--    <maven.compiler.release>17</maven.compiler.release>-->
+<!--    <spring.boot-version>3.1.6</spring.boot-version>-->
+    <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
+<!--    <jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-17:latest</jkube.generator.from>-->
+  </properties>
+
+<!--  <dependencyManagement>-->
+<!--    <dependencies>-->
+<!--      <dependency>-->
+<!--        <groupId>com.redhat.camel.springboot.platform</groupId>-->
+<!--        <artifactId>camel-spring-boot-bom</artifactId>-->
+<!--        <version>4.0.0.redhat-00039</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+<!--    </dependencies>-->
+<!--  </dependencyManagement>-->
+
+  <dependencies>
+
+    <!-- Spring Boot -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-web</artifactId>-->
+<!--      <exclusions>-->
+<!--        <exclusion>-->
+<!--          <groupId>org.springframework.boot</groupId>-->
+<!--          <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-undertow</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--    </dependency>-->
+    <!-- Artemis MQ broker -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-artemis</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.activemq</groupId>-->
+<!--      <artifactId>activemq-client</artifactId>-->
+<!--      <version>5.11.0.redhat-630516</version>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-jms-client</artifactId>
+      <version>2.30.0</version>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.apache.activemq</groupId>-->
+<!--      <artifactId>activemq-all</artifactId>-->
+<!--      <version>5.15.3</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>jakarta.jms</groupId>-->
+<!--      <artifactId>jakarta.jms-api</artifactId>-->
+<!--      <version>3.0.0</version> &lt;!&ndash; or the latest version &ndash;&gt;-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.activemq</groupId>-->
+<!--      <artifactId>artemis-jms-client</artifactId>-->
+<!--      <version>2.20.0</version> &lt;!&ndash; or the latest version &ndash;&gt;-->
+<!--    </dependency>-->
+
+
+    <!--    <dependency>-->
+<!--      <groupId>org.apache.activemq</groupId>-->
+<!--      <artifactId>artemis-amqp-protocol</artifactId>-->
+<!--      <version>2.37.0</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-amqp</artifactId>-->
+<!--    </dependency>-->
+    <!-- Camel -->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.camel.springboot</groupId>-->
+<!--      <artifactId>camel-spring-boot-starter</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.camel.springboot</groupId>-->
+<!--      <artifactId>camel-stream-starter</artifactId>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.apache.qpid</groupId>-->
+<!--      <artifactId>qpid-jms-client</artifactId>-->
+<!--      <version>2.5.0</version>-->
+<!--    </dependency>-->
+
+    <!-- Test -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-test</artifactId>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.camel</groupId>-->
+<!--      <artifactId>camel-test-spring-junit5</artifactId>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>javax.jms-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>redhat-ga</id>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <name>Red Hat GA repository</name>
+      <snapshots>
+          <enabled>false</enabled>
+      </snapshots>
+      <releases>
+          <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>redhat-ga</id>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <name>Red Hat GA repository</name>
+      <snapshots>
+          <enabled>false</enabled>
+      </snapshots>
+      <releases>
+          <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <!-- This plugin sets the main class in the manifest -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Main-Class>com.redhat.ArtemisMessageProduceMasterTesting</Main-Class> <!-- Full path to your main class -->
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <!--  <build>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--        <version>${spring.boot-version}</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <goals>-->
+<!--              <goal>repackage</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--        <version>${surefire.plugin.version}</version>-->
+<!--      </plugin>-->
+<!--      <plugin>-->
+<!--        <groupId>com.redhat.camel.springboot.platform</groupId>-->
+<!--        <artifactId>patch-maven-plugin</artifactId>-->
+<!--        <version>4.0.0.redhat-00039</version>-->
+<!--        <extensions>true</extensions>-->
+<!--        <configuration>-->
+<!--          <skip>false</skip>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
+
+  <profiles>
+    <profile>
+      <id>openshift</id>
+      <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.jkube</groupId>
+            <artifactId>openshift-maven-plugin</artifactId>
+            <version>1.13.1.redhat-00043</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>resource</goal>
+                  <goal>build</goal>
+                  <goal>apply</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Maven dependency check for vulerability scan -->
+          <plugin>
+            <groupId>org.owasp</groupId>
+            <artifactId>dependency-check-maven</artifactId>
+            <version>9.0.9</version>
+            <configuration>
+              <!-- Fail build if CVSS [Common Vulnerability Scoring System between 0-10] there are more than or equal to 8 CVSS
+              Ref: https://nvd.nist.gov/vuln-metrics/cvss
+              -->
+              <failBuildOnCVSS>8</failBuildOnCVSS>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
